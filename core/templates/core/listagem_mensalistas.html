@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+
+{% block main %}
+<br> <button class="btn btn-success"  onclick="location.href='/'">Home</button><br><br>
+   <ul class="list-group">
+            {% for mens in mensalistas %}
+                <li class="list-group-item">
+                        Código: {{ mens.id}}<br>
+                        Descrição:  {{ mens.mensalidade }}<br>
+                        Mensalidade: {{ mens.mensalidade.valor }}<br>
+                        {% if mens.observacao %}
+                            Obs: {{ mens.observacao }}<br><br>
+                        {% else %}
+                            Obs: <br>
+                        {% endif %}
+                        <a href="{% url 'url_atualiza_mensalista' mens.id %}"class="btn btn-primary">Editar</a>&nbsp;&emsp;&emsp;&nbsp;
+                        <a href="{% url 'url_exclui_mensalista' mens.id %}"class="btn btn-danger">Excluir</a>&emsp;&emsp;&nbsp;<br><br>
+                </li>
+            {% endfor %}
+   </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+
+{% block main %}
+
+ <br> <button class="btn btn-success"  onclick="location.href='/'">Home</button><br><br>
+
+        <ul class="list-group">
+            {% for param in parametros %}
+                   <li class="list-group-item">
+                        Identificador: {{ param.id}} &nbsp;<br>
+                        Serviço: {{ param.descricao }}<br>
+                        Valor = {{ param.valor }}<br>
+                        <a href="{% url 'url_atualiza_parametro' param.id %}"class="btn btn-primary">Editar</a>&emsp;&emsp;
+                        <a href="{% url 'url_exclui_parametro' param.id %}"class="btn btn-danger">Excluir</a>&emsp;&emsp;<br><br>
+
+                   </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

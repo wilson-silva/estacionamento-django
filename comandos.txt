@@ -1,0 +1,43 @@
+
+Aula 3 - Template
+
+Aula 4 - Sistema de autenticação
+
+-> python manage.py makemigrations:
+verifica se tem class ou def no medels.py 
+e aplica uma validação de sintaxe e cria 
+os scripts de migrations
+
+-> python manage.py migrate:
+aplica os scripts de banco de dados (cria as tabelas)
+ou alterar
+
+-> python manage.py createsuperuser:
+adiciona um usuario administrador (admin)
+ex: admin - admin
+
+-> python manage.py createuser:
+adiciona um usuário comum (sem ser staff)
+
+Aula 5 - Camada model
+- criar tabela
+- criar formulário
+
+-> python manage.py makemigrations:
+-> python -m pip install Pillow:
+modulo para fazer upload de arquivos
+-> python manage.py migrate:
+
+Aula 6 - CRUD (create, read, update, delete)
+View/Template Cadastro
+View/Template Update
+View/Template Delete
+Formularios
+
+Aula 7 - Modelo de dados
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{titulo}}
+{% endblock %}
+
+{% block main %}
+    <h3> Deseja realmente excluir {{ acao }} ? </h3>
+
+    <form method="post">
+        {% csrf_token %}
+       <button type="submit">Sim</button>&nbsp;
+       <button type="button" onclick="location.href='/'">Não</button>
+    </form>
+
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="text-center">
+            <h3>{{ acao }}</h3>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul class="nav nav-pills">
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Cliente</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/cadastro_cliente/">Cadastro</a>
+                    <a class="dropdown-item" href="/listagem_clientes/">Listagem</a>
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Veículo</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/cadastro_veiculo/">Cadastro</a>
+                    <a class="dropdown-item" href="/listagem_veiculos/">Listagem</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Tabela de Preços</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/cadastro_parametro/">Cadastro</a>
+                    <a class="dropdown-item" href="/listagem_parametros/">Listagem</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Movimento</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/cadastro_movimento/">Cadastro</a>
+                    <a class="dropdown-item" href="/listagem_movimentos/">Listagem</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Mensalista</a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/cadastro_mensalista/">Cadastro</a>
+                    <a class="dropdown-item" href="/listagem_mensalistas/">Listagem</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col text-right">
+                {% if user.get_username %}
+                    (usuário : {{ user.get_username }} | <a href="accounts/logout">sair</a> )
+                {% else %}
+                    (usuário não autenticado | <a href="accounts/login/"> login</a> -
+                                               <a href="registrar/">registrar</a> )
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            {% block main %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

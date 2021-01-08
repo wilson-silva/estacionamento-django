@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{titulo}}
+{% endblock %}
+
+
+{% block main %}
+<br> <button class="btn btn-success"  onclick="location.href='/'">Home</button><br><br>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <form  method="post" class="form-inline">
+                {% csrf_token %}
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="placa">
+                <button class="btn btn-success" type="submit">Pesquisar</button>&emsp;
+
+            </form>
+        </nav>
+
+    <ul class="list-group">
+        {% for veic in veiculos %}
+              <li class="list-group-item">
+                    Fabricante:  {{ veic.fabricante }}<br>
+                    Modelo:  {{ veic.modelo }}<br>
+                    {% if veic.cor %}
+                        Cor: {{ veic.cor }} <br>
+                    {% else %}
+                        Cor: <br>
+                    {% endif %}
+                    {% if veic.ano %}
+                        Ano:  {{ veic.ano}}<br>
+                    {% else %}
+                        Ano: <br>
+                    {% endif %}
+                    Placa: {{ veic.placa }}<br>
+                    Proprietario:  {{ veic.Id_cliente}}<br><br>
+                    {% if veic.foto %}
+                         <img src="{{ veic.foto.url}}" width="100"> <br>
+                    {% else %}
+                         <img src="{% static 'img/veiculo_generico.jpg' %}" width="100"> <br>
+                    {% endif %}
+                    <br>
+                    <a href="{% url 'url_atualiza_veiculo' veic.id %}"class="btn btn-primary">Editar</a>&emsp;&nbsp;&emsp;
+                    <a href="{% url 'url_exclui_veiculo' veic.id %}"class="btn btn-danger">Excluir</a>&emsp;&nbsp;&emsp;
+              </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
