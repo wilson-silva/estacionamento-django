@@ -237,6 +237,7 @@ def cadastro_movimento(request):
 
 @login_required
 def listagem_movimentos(request):
+
     dados = Movimento.objects.all()
     contexto = {'movimentos': dados, 'acao': 'Lista Movimentos', 'titulo ': 'lista_movimento'}
     return render(request, 'core/listagem_movimentos.html', contexto)
